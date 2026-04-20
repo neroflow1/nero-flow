@@ -1,0 +1,1909 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NERO FLOW | Scalping & Swing</title>
+
+    <link rel="icon" type="image/jpeg" href="logo.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;600;800&family=Cairo:wght@400;700;900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-main: #020202;
+            --bg-card: #0a0a0a;
+            --accent: #E5FF00;
+            --text-light: #ffffff;
+            --text-muted: #888888;
+            --border-dim: #1a1a1a;
+            --border-hover: #333333;
+
+            --font-serif-en: 'Playfair Display', serif;
+            --font-serif-ar: 'Amiri', serif;
+            --font-sans-en: 'Inter', sans-serif;
+            --font-sans-ar: 'Cairo', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-light);
+            font-family: var(--font-serif-ar);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body:lang(en) {
+            font-family: var(--font-serif-en);
+        }
+
+        .sans-font {
+            font-family: var(--font-sans-ar);
+        }
+
+        body:lang(en) .sans-font {
+            font-family: var(--font-sans-en);
+        }
+
+        .top-bar {
+            position: absolute;
+            width: 100%;
+            top: 0;
+            padding: 20px 40px;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        body:lang(en) .top-bar {
+            flex-direction: row-reverse;
+        }
+
+        .header-socials {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .header-social-link {
+            color: var(--text-muted);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 8px;
+            border-radius: 6px;
+            border: 1px solid var(--border-dim);
+            backdrop-filter: blur(5px);
+        }
+
+        .header-social-link:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+            background: rgba(229, 255, 0, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(229, 255, 0, 0.1);
+        }
+
+        .lang-btn {
+            background: rgba(0, 0, 0, 0.5);
+            color: var(--text-muted);
+            border: 1px solid var(--border-dim);
+            padding: 8px 20px;
+            cursor: pointer;
+            border-radius: 6px;
+            font-family: var(--font-sans-en);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .lang-btn:hover {
+            color: var(--text-light);
+            border-color: var(--accent);
+            background: rgba(229, 255, 0, 0.1);
+        }
+
+        .hero {
+            position: relative;
+            min-height: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-top: 120px;
+            padding-bottom: 40px;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('logo.jpg'), url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=1920&auto=format&fit=crop');
+            background-position: center top, center center;
+            background-size: cover, cover;
+            background-repeat: no-repeat;
+            opacity: 0.3;
+            filter: contrast(1.1) brightness(0.7) grayscale(0.5);
+            z-index: 1;
+            mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            width: 100%;
+        }
+
+        .author-name {
+            font-family: var(--font-sans-en);
+            font-size: clamp(3.5rem, 10vw, 6.5rem);
+            font-weight: 900;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            margin-bottom: -10px;
+            text-shadow: 0 10px 40px rgba(229, 255, 0, 0.2);
+            line-height: 1;
+        }
+
+        .sub-name {
+            font-family: var(--font-serif-en);
+            font-size: clamp(1.2rem, 4vw, 2.2rem);
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            direction: ltr;
+            margin-bottom: 40px;
+            text-shadow: 0 5px 20px rgba(0, 0, 0, 0.8);
+            opacity: 0.9;
+        }
+
+        .access-card {
+            background: rgba(8, 8, 8, 0.96);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid var(--border-hover);
+            max-width: 600px;
+            width: 92%;
+            margin: auto;
+            position: relative;
+            z-index: 20;
+            padding: 45px 40px;
+            text-align: right;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.95);
+            border-top: 3px solid var(--accent);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            border-radius: 8px;
+        }
+
+        body:lang(en) .access-card {
+            text-align: left;
+        }
+
+        #introState {
+            text-align: center;
+        }
+
+        #introState h1 {
+            font-size: 2.2rem;
+            font-weight: 400;
+            margin-bottom: 15px;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        #introState p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 35px;
+            font-style: italic;
+        }
+
+        .main-btn {
+            background: var(--text-light);
+            color: var(--bg-main);
+            font-family: var(--font-sans-ar);
+            font-weight: 800;
+            font-size: 1.2rem;
+            border: none;
+            width: 100%;
+            padding: 18px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 20px rgba(255, 255, 255, 0.1);
+        }
+
+        body:lang(en) .main-btn {
+            font-family: var(--font-sans-en);
+        }
+
+        .main-btn:hover {
+            background: var(--accent);
+            box-shadow: 0 5px 25px rgba(229, 255, 0, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .back-btn {
+            background: transparent;
+            color: var(--text-muted);
+            font-family: var(--font-sans-ar);
+            font-size: 0.95rem;
+            border: none;
+            width: 100%;
+            padding: 10px;
+            cursor: pointer;
+            text-decoration: underline;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            color: #fff;
+        }
+
+        .whitelist-info {
+            font-family: var(--font-sans-en);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .timer {
+            font-family: var(--font-sans-en);
+            font-weight: 800;
+            font-size: 1.3rem;
+            margin-top: 15px;
+            direction: ltr;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            color: #fff;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 12px var(--accent);
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(0.95);
+                opacity: 0.5;
+            }
+
+            50% {
+                transform: scale(1.3);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(0.95);
+                opacity: 0.5;
+            }
+        }
+
+        /* تنسيقات نافذة الدفع المنسدلة (Inline Checkout) */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        #checkoutState {
+            display: none;
+            margin-top: 5px;
+            animation: fadeInDown 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .checkout-header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 1px dashed var(--border-dim);
+            padding-bottom: 20px;
+        }
+
+        .checkout-header h2 {
+            font-size: 2.2rem;
+            color: var(--accent);
+            margin-bottom: 10px;
+            font-weight: 400;
+            font-family: var(--font-serif-ar);
+        }
+
+        body:lang(en) .checkout-header h2 {
+            font-family: var(--font-serif-en);
+        }
+
+        .checkout-header p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            opacity: 0.8;
+            font-style: italic;
+        }
+
+        .c-bullet-list {
+            list-style: none;
+            margin-bottom: 35px;
+            font-family: var(--font-sans-ar);
+            background: #000;
+            padding: 20px;
+            border-radius: 6px;
+            border: 1px solid var(--border-hover);
+        }
+
+        body:lang(en) .c-bullet-list {
+            font-family: var(--font-sans-en);
+        }
+
+        .c-bullet-list li {
+            position: relative;
+            padding-right: 25px;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .c-bullet-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        body:lang(en) .c-bullet-list li {
+            padding-right: 0;
+            padding-left: 25px;
+        }
+
+        .c-bullet-list li::before {
+            content: '✓';
+            position: absolute;
+            right: 0;
+            color: var(--accent);
+            font-size: 1rem;
+            top: 0px;
+            font-weight: 900;
+        }
+
+        body:lang(en) .c-bullet-list li::before {
+            right: auto;
+            left: 0;
+        }
+
+        .methods-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #aaa;
+            text-transform: uppercase;
+            font-family: var(--font-sans-ar);
+        }
+
+        body:lang(en) .methods-title {
+            font-family: var(--font-sans-en);
+        }
+
+        .payment-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 25px;
+        }
+
+        .p-method {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 6px;
+            padding: 18px 20px;
+            border: 1px solid var(--border-dim);
+            background: rgba(0, 0, 0, 0.5);
+            font-family: var(--font-sans-en);
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .p-method.disabled {
+            opacity: 0.4;
+            filter: grayscale(1);
+            cursor: not-allowed;
+        }
+
+        .p-method.active-click:hover {
+            border-color: var(--accent);
+        }
+
+        .p-method.selected {
+            border-color: var(--accent);
+            background: linear-gradient(90deg, rgba(229, 255, 0, 0.05) 0%, rgba(5, 5, 5, 0) 100%);
+        }
+
+        body:lang(ar) .p-method.selected {
+            background: linear-gradient(270deg, rgba(229, 255, 0, 0.05) 0%, rgba(5, 5, 5, 0) 100%);
+        }
+
+        .method-name {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .method-name span {
+            color: #fff;
+            font-family: var(--font-sans-ar);
+            font-size: 0.9rem;
+        }
+
+        body:lang(en) .method-name span {
+            font-family: var(--font-sans-en);
+        }
+
+        .badge {
+            padding: 4px 10px;
+            font-size: 0.7rem;
+            border-radius: 4px;
+            font-family: var(--font-sans-ar);
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
+
+        body:lang(en) .badge {
+            font-family: var(--font-sans-en);
+        }
+
+        .badge-red {
+            background: rgba(255, 50, 50, 0.1);
+            color: #ff4444;
+            border: 1px solid rgba(255, 68, 68, 0.3);
+        }
+
+        .badge-green {
+            background: rgba(229, 255, 0, 0.1);
+            color: var(--accent);
+            border: 1px solid rgba(229, 255, 0, 0.3);
+        }
+
+        /* منطقة الدفع التي تظهر بعد اختيار الكريبتو */
+        #cryptoExpand {
+            display: none;
+            animation: fadeInDown 0.4s ease forwards;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid var(--accent);
+            padding: 25px;
+            border-radius: 6px;
+        }
+
+        .checkout-form {
+            margin-bottom: 25px;
+            border-bottom: 1px dashed var(--border-dim);
+            padding-bottom: 10px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            text-align: right;
+        }
+
+        body:lang(en) .input-group {
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            font-family: var(--font-sans-ar);
+            font-size: 0.85rem;
+            color: #fff;
+            margin-bottom: 8px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        body:lang(en) .input-group label {
+            font-family: var(--font-sans-en);
+        }
+
+        .checkout-input {
+            width: 100%;
+            background: #000;
+            border: 1px solid var(--border-hover);
+            border-radius: 4px;
+            color: var(--text-light);
+            padding: 15px;
+            font-family: var(--font-sans-en);
+            font-size: 1rem;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        select.checkout-input {
+            font-family: var(--font-sans-ar);
+            direction: rtl;
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23888888' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: left 15px center;
+            background-size: 16px;
+        }
+
+        body:lang(en) select.checkout-input {
+            font-family: var(--font-sans-en);
+            direction: ltr;
+            background-position: right 15px center;
+        }
+
+        select.checkout-input option {
+            background: #000;
+            color: #fff;
+        }
+
+        .checkout-input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 10px rgba(229, 255, 0, 0.1);
+        }
+
+        .net-title {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .crypto-options {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 25px;
+        }
+
+        .c-btn {
+            background: #050505;
+            border: 1px solid var(--border-hover);
+            color: var(--text-muted);
+            border-radius: 4px;
+            padding: 12px;
+            flex: 1;
+            cursor: pointer;
+            transition: 0.3s;
+            font-family: var(--font-sans-en);
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        .c-btn:hover {
+            border-color: #555;
+            color: #fff;
+        }
+
+        .c-btn.active {
+            border-color: var(--accent);
+            color: var(--bg-main);
+            background: var(--accent);
+            box-shadow: 0 0 15px rgba(229, 255, 0, 0.3);
+        }
+
+        .wallet-display {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #000;
+            border: 1px dashed var(--border-hover);
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+        }
+
+        .qr-center img {
+            width: 140px;
+            height: 140px;
+            border: 4px solid #fff;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+
+        .wallet-input {
+            width: 100%;
+            border: none;
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            padding: 12px;
+            border-radius: 4px;
+            font-family: monospace;
+            text-align: center;
+            font-size: 0.85rem;
+            outline: none;
+            border: 1px solid #222;
+        }
+
+        .btn-copy {
+            background: transparent;
+            color: var(--text-light);
+            border: 1px solid var(--text-light);
+            border-radius: 4px;
+            padding: 12px 20px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            margin-bottom: 25px;
+            width: 100%;
+            transition: 0.3s;
+            font-weight: 600;
+            font-family: var(--font-sans-ar);
+            text-transform: uppercase;
+        }
+
+        body:lang(en) .btn-copy {
+            font-family: var(--font-sans-en);
+        }
+
+        .btn-copy:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--font-sans-en);
+            margin-bottom: 20px;
+            background: #000;
+            padding: 20px;
+            border-radius: 6px;
+            border: 1px solid var(--border-hover);
+        }
+
+        .btn-confirm {
+            background: #1e52ee;
+            color: #fff;
+            border: none;
+            width: 100%;
+            padding: 20px;
+            border-radius: 6px;
+            font-family: var(--font-sans-ar);
+            font-weight: 800;
+            font-size: 1.15rem;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            box-shadow: 0 5px 20px rgba(30, 82, 238, 0.4);
+        }
+
+        body:lang(en) .btn-confirm {
+            font-family: var(--font-sans-en);
+        }
+
+        .btn-confirm:hover {
+            background: #3567fb;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(30, 82, 238, 0.6);
+        }
+
+        /* الأقسام الجديدة - الشرح والفيديوهات */
+        .section-padding {
+            padding: 100px 20px;
+            max-width: 1300px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-family: var(--font-serif-ar);
+            color: #fff;
+        }
+
+        body:lang(en) .section-title {
+            font-family: var(--font-serif-en);
+        }
+
+        .section-title span {
+            color: var(--accent);
+        }
+
+        .section-desc {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 50px;
+        }
+
+        /* منطقة شرح الكورس */
+        .course-features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        @media (max-width: 800px) {
+            .course-features {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .feature-card {
+            background: #0a0a0a;
+            border: 1px solid var(--border-hover);
+            padding: 40px 30px;
+            border-radius: 8px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .feature-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            font-family: var(--font-sans-ar);
+            color: #fff;
+        }
+
+        body:lang(en) .feature-title {
+            font-family: var(--font-sans-en);
+        }
+
+        .feature-text {
+            font-size: 0.95rem;
+            color: #999;
+            line-height: 1.7;
+        }
+
+        /* منطقة الفيديوهات والأرباح */
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        @media (max-width: 1000px) {
+            .videos-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .videos-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .vid-card {
+            background: #000;
+            border: 1px solid var(--border-dim);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            transition: 0.3s;
+        }
+
+        .vid-card:hover {
+            border-color: #444;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.8);
+        }
+
+        .v-player {
+            width: 100%;
+            aspect-ratio: 9/16;
+            background: #050505;
+            display: block;
+            object-fit: cover;
+        }
+
+        .v-info {
+            padding: 15px;
+            text-align: right;
+        }
+
+        body:lang(en) .v-info {
+            text-align: left;
+        }
+
+        .v-title {
+            font-family: var(--font-sans-ar);
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        body:lang(en) .v-title {
+            font-family: var(--font-sans-en);
+        }
+
+        .v-sub {
+            font-family: var(--font-sans-en);
+            font-size: 0.8rem;
+            color: var(--accent);
+        }
+
+        /* قسم التقييمات */
+        .reviews-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        @media (max-width: 900px) {
+            .reviews-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .reviews-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+            .review-box {
+                padding: 15px 10px;
+            }
+            .r-text {
+                font-size: 0.75rem;
+                line-height: 1.5;
+            }
+            .r-stars { font-size: 0.8rem; }
+            .quote-icon { width: 16px; height: 16px; margin-bottom: 5px; }
+            .r-author { font-size: 0.8rem; margin-top: 10px;}
+        }
+
+        .review-box {
+            background: #080808;
+            border: 1px solid #1a1a1a;
+            padding: 35px 30px;
+            position: relative;
+            transition: all 0.3s ease;
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border-radius: 4px;
+        }
+
+        body:lang(en) .review-box {
+            text-align: left;
+        }
+
+        /* تأثير الميلان */
+        .review-box:nth-child(1) {
+            transform: rotate(-1.5deg);
+        }
+
+        .review-box:nth-child(2) {
+            transform: rotate(1deg);
+        }
+
+        .review-box:nth-child(3) {
+            transform: rotate(-0.5deg);
+        }
+
+        .review-box:nth-child(4) {
+            transform: rotate(1.2deg);
+        }
+
+        .review-box:nth-child(5) {
+            transform: rotate(-1.2deg);
+        }
+
+        .review-box:nth-child(6) {
+            transform: rotate(0.8deg);
+        }
+
+        .review-box:nth-child(7) {
+            transform: rotate(-1.5deg);
+        }
+
+        .review-box:nth-child(8) {
+            transform: rotate(1.5deg);
+        }
+
+        .review-box:nth-child(9) {
+            transform: rotate(-0.8deg);
+        }
+
+        .review-box:hover {
+            transform: scale(1.03) rotate(0deg);
+            z-index: 10;
+            border-color: #333;
+        }
+
+        .quote-icon {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            opacity: 0.15;
+            width: 22px;
+            fill: var(--text-light);
+        }
+
+        body:lang(ar) .quote-icon {
+            right: auto;
+            left: 25px;
+        }
+
+        .stars-container {
+            align-self: flex-start;
+            margin-bottom: 25px;
+        }
+
+        body:lang(en) .stars-container {
+            align-self: flex-start;
+        }
+
+        body:lang(ar) .stars-container {
+            align-self: flex-end;
+        }
+
+        .r-stars {
+            position: relative;
+            display: inline-block;
+            color: #000;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            z-index: 2;
+            padding: 4px 15px;
+            font-weight: bold;
+        }
+
+        .r-stars::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg preserveAspectRatio='none' viewBox='0 0 100 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2,15 C5,5 30,2 50,5 C70,8 95,2 98,15 C100,25 90,38 50,35 C15,32 0,25 2,15 Z' fill='%23E5FF00'/%3E%3C/svg%3E");
+            background-size: 100% 100%;
+            z-index: -1;
+            transform: rotate(-2deg) scale(1.3);
+            filter: drop-shadow(0 2px 5px rgba(229, 255, 0, 0.2));
+        }
+
+        .r-text {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: #a5a5a5;
+            flex-grow: 1;
+        }
+
+        .r-author {
+            font-family: var(--font-sans-ar);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #555;
+            letter-spacing: 1px;
+        }
+
+        body:lang(en) .r-author {
+            font-family: var(--font-sans-en);
+        }
+
+        .risk-disclosure {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            border-top: 1px solid var(--border-dim);
+            text-align: justify;
+        }
+
+        body:lang(en) .risk-disclosure {
+            text-align: left;
+        }
+
+        body:lang(ar) .risk-disclosure {
+            text-align: right;
+        }
+
+        .risk-disclosure h4 {
+            font-family: var(--font-sans-ar);
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        body:lang(en) .risk-disclosure h4 {
+            font-family: var(--font-sans-en);
+        }
+
+        .risk-disclosure p {
+            font-family: var(--font-sans-ar);
+            font-size: 0.8rem;
+            color: #555555;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        body:lang(en) .risk-disclosure p {
+            font-family: var(--font-sans-en);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            font-family: var(--font-sans-en);
+            font-size: 0.8rem;
+            color: #444;
+            background: #000;
+        }
+
+
+        /* Glowing Border Effect */
+        @keyframes glowingBorder {
+            0% {
+                box-shadow: 0 0 5px var(--accent), inset 0 0 2px var(--accent);
+                border-color: var(--accent);
+            }
+
+            50% {
+                box-shadow: 0 0 20px var(--accent), inset 0 0 10px var(--accent);
+                border-color: #fff;
+            }
+
+            100% {
+                box-shadow: 0 0 5px var(--accent), inset 0 0 2px var(--accent);
+                border-color: var(--accent);
+            }
+        }
+
+        .glow-box {
+            animation: glowingBorder 2s infinite alternate;
+        }
+
+        .social-section {
+            text-align: center;
+            padding: 60px 20px 40px;
+            background: linear-gradient(180deg, #000 0%, #050505 100%);
+            border-top: 1px solid var(--border-dim);
+            font-family: var(--font-sans-ar);
+        }
+
+        body:lang(en) .social-section {
+            font-family: var(--font-sans-en);
+        }
+
+        .social-section h3 {
+            font-size: 1.8rem;
+            color: #fff;
+            margin-bottom: 25px;
+            font-family: var(--font-serif-ar);
+        }
+
+        body:lang(en) .social-section h3 {
+            font-family: var(--font-serif-en);
+        }
+
+        .social-section h3 span {
+            color: var(--accent);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .s-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 25px;
+            background: #080808;
+            border: 1px dashed #222;
+            border-radius: 8px;
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 700;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            letter-spacing: 0.5px;
+        }
+
+        .s-link:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(229, 255, 0, 0.1);
+            color: #fff;
+            background: #000;
+        }
+
+        .s-link span {
+            font-family: var(--font-sans-en);
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .top-bar { padding: 15px 20px; }
+            .header-social-link svg { width: 16px; height: 16px; }
+            .header-social-link { padding: 6px; }
+            .hero { padding-top: 90px; }
+            .access-card { padding: 25px 15px; width: 95%; }
+            .checkout-header h2 { font-size: 1.6rem; }
+            .c-bullet-list { padding: 15px 10px; }
+            .c-bullet-list li { font-size: 0.85rem; margin-bottom: 12px; }
+            .author-name { font-size: clamp(2.5rem, 12vw, 3.5rem) !important; margin-bottom: 5px; }
+            .sub-name { font-size: clamp(0.9rem, 5vw, 1.1rem); margin-bottom: 25px; }
+            .videos-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; }
+            .v-title { font-size: 0.8rem !important; margin-bottom: 2px !important; }
+            .v-sub { font-size: 0.7rem !important; }
+            .v-info { padding: 10px !important; }
+            .section-title { font-size: 1.8rem; margin-bottom: 30px !important; }
+            #introState h1 { font-size: 1.4rem; }
+            .social-section h3 { font-size: 1.4rem; }
+            .s-link { width: calc(50% - 10px); justify-content: center; font-size: 0.85rem; padding: 10px 15px; }
+            .wallet-display .qr-center img { width: 120px; height: 120px; }
+            
+            /* Payment & Checkout Mobile Fits */
+            #cryptoExpand { padding: 15px 12px; }
+            .p-method { padding: 12px 10px; font-size: 0.8rem; }
+            .method-name { gap: 6px; flex: 1; }
+            .method-name span { font-size: 0.75rem; white-space: normal; line-height: 1.2; }
+            .badge { padding: 4px 6px; font-size: 0.55rem; white-space: nowrap; flex-shrink: 0; margin-right: 5px; }
+            body:lang(en) .badge { margin-right: 0; margin-left: 5px; }
+            .crypto-options { flex-direction: column; gap: 8px; }
+            .c-btn { font-size: 0.8rem; padding: 10px; }
+            .wallet-input { font-size: 0.7rem !important; padding: 12px 8px !important; text-align: left !important; direction: ltr; }
+            .btn-copy, .btn-confirm { padding: 12px; font-size: 0.9rem; }
+            .total-row { flex-direction: column; align-items: flex-start; gap: 5px; }
+            .total-row div { width: 100%; display: flex; justify-content: flex-end; gap: 10px; }
+            .total-row span { font-size: 0.9rem !important; }
+            .total-row div span { font-size: 1.1rem !important; }
+            .input-group label { font-size: 0.75rem; }
+            .checkout-input { padding: 12px; font-size: 0.9rem; }
+            .confirm-checkbox-container label { font-size: 0.75rem; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="top-bar">
+        <div class="header-socials">
+            <a href="https://t.me/Neroflow1" class="header-social-link" title="Telegram" target="_blank"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.896-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a>
+            <a href="https://www.instagram.com/577nf?igsh=eXZtdjNyd3YwMWc5&utm_source=qr" class="header-social-link" title="Instagram" target="_blank"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+            <a href="https://www.tiktok.com/@nero.flow1?_r=1&_t=ZS-95WUFmVplHZ" class="header-social-link" title="TikTok" target="_blank"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.536.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 2.23-1.13 4.35-2.91 5.75-1.76 1.39-4.08 1.93-6.26 1.47-2.18-.47-4.06-1.8-5.18-3.72-1.11-1.92-1.25-4.32-.4-6.36.85-2.03 2.58-3.63 4.68-4.29 2.1-.66 4.41-.45 6.32.58V9.87c-1.33-.86-2.97-1.18-4.52-.89-1.55.3-2.95 1.25-3.83 2.58-.87 1.34-1.11 3.04-.66 4.57.44 1.53 1.57 2.8 2.99 3.42 1.43.62 3.1.6 4.5-.04 1.39-.65 2.5-1.85 2.96-3.3.46-1.45.41-3.05.35-4.57V.02z"/></svg></a>
+        </div>
+        <button class="lang-btn" onclick="toggleLang()" id="langToggle">English</button>
+    </div>
+
+    <!-- 1. شاشة الهبوط الرئيسية -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+
+            <!-- العناوين العلوية תطفو فوق الملصق -->
+            <div style="text-align: center; position: relative; z-index: 100; margin-bottom: 10px;">
+                <h1 class="author-name"
+                    style="font-size: clamp(3.5rem, 8vw, 5.5rem); margin-bottom: -5px; text-shadow: 0 10px 40px rgba(229,255,0,0.2);">
+                    NERO FLOW</h1>
+                <div class="sub-name t"
+                    style="font-size: clamp(0.9rem, 3vw, 1.3rem); margin-bottom: 0; color: #E5FF00; letter-spacing: 5px; font-weight: 700; text-shadow: 0 5px 15px rgba(0,0,0,0.9);"
+                    data-ar="ساحة المعركة الحقيقية" data-en="THE REAL BATTLEGROUND">ساحة المعركة الحقيقية</div>
+            </div>
+
+            <!-- الملصق هنا وسطياً بين العناوين وساحة المعركة -->
+            <div class="sticker-wrapper"
+                style="position: relative; z-index: 90; width: 220px; margin: 0 auto -90px; display: block; text-align: center; top: -30px;">
+                <!-- استخدام القناع البيضاوي بحدود closest-side لضمان مسح الحواف الجانبية بشكل تام وبدون أثر -->
+                <img src="logo.jpg" alt="NERO FLOW Sticker"
+                    style="width: 100%; display: block; filter: contrast(1.1) grayscale(0) brightness(1); -webkit-mask-image: radial-gradient(closest-side, black 60%, transparent 95%); mask-image: radial-gradient(closest-side, black 60%, transparent 95%);">
+
+                <!-- شريط الحجب الأصفر للعيون مع تأثير تقطير الدماء -->
+                <div
+                    style="position: absolute; top: 40%; left: 16%; width: 68%; height: 26px; background-color: var(--accent); box-shadow: 0 0 15px rgba(229, 255, 0, 0.4); transform: rotate(-2deg); border-radius: 2px; z-index: 65;">
+                    <div
+                        style="position: absolute; bottom: -18px; left: 16%; width: 4px; height: 20px; background-color: var(--accent); border-radius: 0 0 5px 5px; box-shadow: 0 2px 8px rgba(229,255,0,0.3);">
+                    </div>
+                    <div
+                        style="position: absolute; bottom: -32px; left: 45%; width: 5px; height: 35px; background-color: var(--accent); border-radius: 0 0 5px 5px; box-shadow: 0 2px 8px rgba(229,255,0,0.3);">
+                    </div>
+                    <div
+                        style="position: absolute; bottom: -12px; left: 75%; width: 3px; height: 14px; background-color: var(--accent); border-radius: 0 0 5px 5px; box-shadow: 0 2px 8px rgba(229,255,0,0.3);">
+                    </div>
+                </div>
+            </div>
+
+            <div class="access-card" id="mainCard" style="margin-top: 0; position: relative; z-index: 80;">
+
+                <!-- الواجهة الترحيبية -->
+                <div id="introState" style="padding-top: 40px;">
+                    <h1 class="t" data-ar="تعلم كيف تقرا السوق الحقيقي" data-en="Learn how to read the real market">
+                        تعلم كيف تقرا السوق الحقيقي</h1>
+                    <p class="t" data-ar="احصل على استراتيجيات النخبة الآن وتداول كالمحترفين"
+                        data-en="Get elite strategies now and trade like a pro">احصل على استراتيجيات النخبة الآن وتداول
+                        كالمحترفين</p>
+
+                    <button class="main-btn t" onclick="openCheckout()" data-ar="احصل على الكورس الآن"
+                        data-en="Get The Course Now">احصل على الكورس الآن</button>
+
+                    <div class="whitelist-info t" data-ar="إمكانية الوصول محدودة العدد عمداً لضمان الجودة"
+                        data-en="Access is deliberately limited to preserve quality">إمكانية الوصول محدودة العدد عمداً
+                        لضمان الجودة</div>
+                    <div class="timer" id="countdownTimer">28:00:00:00 <div class="dot"></div>
+                    </div>
+                </div>
+
+                <!-- 2. واجهة تفاصيل وشرح الكورس (Order Flow) -->
+                <div id="courseDetailsState" style="display: none; padding-top: 10px; text-align: right;">
+                    <div class="checkout-header" style="margin-bottom: 20px;">
+                        <h2 class="t" style="font-size: 1.8rem;" data-ar="تفاصيل الكورس" data-en="Course Details">تفاصيل
+                            الكورس</h2>
+                    </div>
+
+                    <div class="glow-box"
+                        style="background: rgba(0,0,0,0.4); padding: 25px 20px; border-radius: 8px; margin-bottom: 20px; line-height: 1.8;">
+                        <ul style="list-style: none; padding: 0; text-align: center; display: flex; flex-direction: column; gap: 10px;">
+                            <li style="border-bottom: 1px dashed #222; padding-bottom: 10px;">
+                                <strong class="t"
+                                    style="color: #ffffff; font-size: 1.1rem; display: block;"
+                                    data-ar="☆ مقدمة عن السوق والسيولة" data-en="☆ Market and Liquidity Introduction">☆
+                                    مقدمة عن السوق والسيولة</strong>
+                            </li>
+                            <li style="border-bottom: 1px dashed #222; padding-bottom: 10px;">
+                                <strong class="t"
+                                    style="color: #ffffff; font-size: 1.1rem; display: block;"
+                                    data-ar="☆ Volume Profile" data-en="☆ Volume Profile">☆ Volume Profile</strong>
+                            </li>
+                            <li style="border-bottom: 1px dashed #222; padding-bottom: 10px;">
+                                <strong class="t"
+                                    style="color: #ffffff; font-size: 1.1rem; display: block;"
+                                    data-ar="☆ قراءة المناطق المهمة" data-en="☆ Reading Key Areas">☆ قراءة المناطق
+                                    المهمة</strong>
+                            </li>
+                            <li style="border-bottom: 1px dashed #222; padding-bottom: 10px;">
+                                <strong class="t"
+                                    style="color: #ffffff; font-size: 1.1rem; display: block;"
+                                    data-ar="☆ فهم Footprint" data-en="☆ Understanding Footprint">☆ فهم
+                                    Footprint</strong>
+                            </li>
+                            <li style="border-bottom: 1px dashed #222; padding-bottom: 10px;">
+                                <strong class="t"
+                                    style="color: #ffffff; font-size: 1.1rem; display: block;"
+                                    data-ar="☆ تحديد نقاط الدخول" data-en="☆ Identifying Entry Points">☆ تحديد نقاط
+                                    الدخول</strong>
+                            </li>
+                            <li style="border-bottom: 1px dashed #222; padding-bottom: 10px;">
+                                <strong class="t"
+                                    style="color: #ffffff; font-size: 1.1rem; display: block;"
+                                    data-ar="☆ إدارة المخاطر" data-en="☆ Risk Management">☆ إدارة المخاطر</strong>
+                            </li>
+                            <li style="border-bottom: 1px dashed #222; padding-bottom: 10px;">
+                                <strong class="t"
+                                    style="color: #ffffff; font-size: 1.1rem; display: block;"
+                                    data-ar="☆ استراتيجيات عملية" data-en="☆ Practical Strategies">☆ استراتيجيات
+                                    عملية</strong>
+                            </li>
+                            <li style="border-bottom: 1px dashed #222; padding-bottom: 10px;">
+                                <strong class="t"
+                                    style="color: #ffffff; font-size: 1.1rem; display: block;"
+                                    data-ar="☆ تطبيقات مباشرة" data-en="☆ Live Applications">☆ تطبيقات مباشرة</strong>
+                            </li>
+                            <li>
+                                <strong class="t"
+                                    style="color: #ffffff; font-size: 1.1rem; display: block;"
+                                    data-ar="☆ خلاصة وخطة عمل" data-en="☆ Summary and Action Plan">☆ خلاصة وخطة
+                                    عمل</strong>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <ul class="c-bullet-list" style="margin-bottom: 20px;">
+                        <li class="t" data-ar="يبدا من الصفر" data-en="Starts from zero">يبدا من الصفر</li>
+                        <li class="t" data-ar="شرح بسيط وواضح" data-en="Simple and clear explanation">شرح بسيط وواضح
+                        </li>
+                        <li class="t" data-ar="تطبيق عملي مباشر" data-en="Direct practical application">تطبيق عملي مباشر
+                        </li>
+                        <li class="t" data-ar="بدون تعقيد أو حشو" data-en="No complexity or fluff">بدون تعقيد أو حشو
+                        </li>
+                        <li class="t" data-ar="وصول دائم للكورس" data-en="Lifetime access to the course">وصول دائم
+                            للكورس</li>
+                        <li class="t" data-ar="تحديثات مستقبلية" data-en="Future updates">تحديثات مستقبلية</li>
+                    </ul>
+
+                    <div
+                        style="text-align: center; margin-bottom: 25px; padding-top: 20px; border-top: 1px dashed var(--border-dim);">
+                        <div class="t"
+                            style="font-size: 1rem; color: var(--text-muted); margin-bottom: 5px; font-weight: 700;"
+                            data-ar="سعر التسجيل في المنظومة" data-en="System Enrollment Price">سعر التسجيل في المنظومة
+                        </div>
+                        <div
+                            style="font-size: 1.5rem; text-decoration: line-through; color: #ff3333; font-family: var(--font-sans-en); margin-bottom: -10px;">
+                            $1500.00
+                        </div>
+                        <div
+                            style="font-size: 3.5rem; font-weight: 900; color: var(--accent); font-family: var(--font-sans-en); text-shadow: 0 5px 15px rgba(229,255,0,0.15); line-height: 1; letter-spacing: -1px;">
+                            $799.00</div>
+                    </div>
+
+                    <button class="main-btn t" onclick="showPaymentMethods()" data-ar="سجل الآن"
+                        data-en="Register Now">سجل الآن</button>
+                    <button class="back-btn t" onclick="backToIntro()" data-ar="العودة"
+                        data-en="Go Back">العودة</button>
+                </div>
+
+                <!-- 3. واجهة اختيار الدفع المنسدلة (مخفية في البداية) -->
+                <div id="paymentMethodsState" style="display: none; padding-top: 10px;">
+                    <form id="checkoutForm" onsubmit="handleFormSubmit(event)">
+
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                            <div class="methods-title t" style="margin-bottom: 0;" data-ar="بيانات التسجيل" data-en="Registration Details">بيانات التسجيل</div>
+                            <button type="button" class="back-btn t" onclick="backToCourseDetails()"
+                                style="width: auto; padding: 0; margin: 0; font-size: 0.85rem;"
+                                data-ar="← العودة" data-en="← Back">← العودة</button>
+                        </div>
+
+                        <div class="checkout-form">
+                            <div class="input-group">
+                                <label class="t" data-ar="الاسم" data-en="Name">الاسم</label>
+                                <input type="text" class="checkout-input" id="userName" placeholder="الاسم الكامل" required>
+                            </div>
+                            <div class="input-group">
+                                <label class="t" data-ar="البريد الإلكتروني" data-en="Email Address">البريد الإلكتروني</label>
+                                <input type="email" class="checkout-input" id="userEmail" placeholder="example@gmail.com" required>
+                            </div>
+                            <div class="input-group">
+                                <label class="t" data-ar="البلد" data-en="Country">البلد</label>
+                                <select class="checkout-input" id="userCountry" required>
+                                    <option value="" disabled selected class="t" data-ar="الرجاء اختيار بلدك..." data-en="Please select your country...">الرجاء اختيار بلدك...</option>
+                                    <option value="SA" class="t" data-ar="المملكة العربية السعودية" data-en="Saudi Arabia">المملكة العربية السعودية</option>
+                                    <option value="AE" class="t" data-ar="الإمارات العربية المتحدة" data-en="United Arab Emirates">الإمارات العربية المتحدة</option>
+                                    <option value="KW" class="t" data-ar="الكويت" data-en="Kuwait">الكويت</option>
+                                    <option value="QA" class="t" data-ar="قطر" data-en="Qatar">قطر</option>
+                                    <option value="BH" class="t" data-ar="البحرين" data-en="Bahrain">البحرين</option>
+                                    <option value="OM" class="t" data-ar="سلطنة عمان" data-en="Oman">سلطنة عمان</option>
+                                    <option value="EG" class="t" data-ar="مصر" data-en="Egypt">مصر</option>
+                                    <option value="IQ" class="t" data-ar="العراق" data-en="Iraq">العراق</option>
+                                    <option value="JO" class="t" data-ar="الأردن" data-en="Jordan">الأردن</option>
+                                    <option value="MA" class="t" data-ar="المغرب" data-en="Morocco">المغرب</option>
+                                    <option value="DZ" class="t" data-ar="الجزائر" data-en="Algeria">الجزائر</option>
+                                    <option value="OTHER" class="t" data-ar="بلد آخر (Other)" data-en="Other Country">بلد آخر (Other)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div style="margin-bottom: 25px; background: rgba(0,0,0,0.4); border: 1px dashed var(--accent); padding: 20px; border-radius: 6px; font-family: var(--font-sans-ar); line-height: 1.8; color: #ccc; font-size: 0.9rem;">
+                            <ul style="list-style: none; padding: 0; margin: 0; gap: 10px; display: flex; flex-direction: column;">
+                                <li class="t" data-ar="• الكورس سيكون مسجل ومتوفر داخل جروب شخصي (1v1) خاص بك." data-en="• The course will be recorded and available in your own personal (1v1) group.">• الكورس سيكون مسجل ومتوفر داخل جروب شخصي (1v1) خاص بك.</li>
+                                <li class="t" data-ar="• عند الدفع سيتم تحويلك إلى تليجرام فوراً، قم بإرسال إيصال الدفع مع بريدك الإلكتروني لمعالجة دخولك لجروب التعليم." data-en="• Upon payment, you will be redirected to Telegram. Send the receipt and email to process your access.">• عند الدفع سيتم تحويلك إلى تليجرام فوراً، قم بإرسال إيصال الدفع مع بريدك الإلكتروني لمعالجة دخولك لجروب التعليم.</li>
+                                <li class="t" data-ar="• ستحصل على تحديثات مستقبلية مجاناً." data-en="• You will receive future updates for free.">• ستحصل على تحديثات مستقبلية مجاناً.</li>
+                                <li class="t" data-ar="• لا يوجد مدة انتهاء لفعالية اشتراكك." data-en="• There is no expiration for your subscription validity.">• لا يوجد مدة انتهاء لفعالية اشتراكك.</li>
+                            </ul>
+                        </div>
+
+                        <div class="methods-title t" style="margin-bottom: 12px; margin-top: 10px;" data-ar="حدد طريقة الدفع" data-en="Select Payment Method">حدد طريقة الدفع</div>
+
+                        <div class="payment-methods">
+                            <!-- Visa Card Disabled -->
+                            <label class="p-method disabled">
+                                <div class="method-name">
+                                    <input type="radio" disabled name="paymethod">
+                                    💳 <span class="t" data-ar="بطاقة ائتمانية (Card)" data-en="Card">بطاقة ائتمانية
+                                        (Card)</span>
+                                </div>
+                                <span class="badge badge-red t" data-ar="معطل" data-en="Unavailable">معطل</span>
+                            </label>
+
+                            <!-- PayPal Disabled -->
+                            <label class="p-method disabled">
+                                <div class="method-name">
+                                    <input type="radio" disabled name="paymethod">
+                                    🔵 <span class="t" data-ar="باي بال (PayPal)" data-en="PayPal">باي بال
+                                        (PayPal)</span>
+                                </div>
+                                <span class="badge badge-red t" data-ar="معطل" data-en="Unavailable">معطل</span>
+                            </label>
+
+                            <!-- Crypto Clickable -->
+                            <label class="p-method active-click" id="cryptoMethodContainer"
+                                onclick="showCryptoDetails()">
+                                <div class="method-name">
+                                    <input type="radio" name="paymethod" id="cryptoRadioBtn">
+                                    ₿ <span class="t" data-ar="الدفع بالكريبتو (Crypto)" data-en="Pay with Crypto">الدفع
+                                        بالكريبتو (Crypto)</span>
+                                </div>
+                                <span class="badge badge-green t" data-ar="متاح الان" data-en="Available">متاح
+                                    الان</span>
+                            </label>
+                        </div>
+
+                        <!-- تفاصيل الإيميل والبلد والدفع تظهر فقط عند النقر على الكريبتو -->
+                        <div id="cryptoExpand">
+
+
+
+                            <div class="net-title t" data-ar="حدد الشبكة والعملة الرقمية التي تناسبك:"
+                                data-en="Select Crypto Network:">حدد الشبكة والعملة الرقمية التي تناسبك:</div>
+                            <div class="crypto-options">
+                                <button type="button" class="c-btn active"
+                                    onclick="switchCrypto('USDT', 'TRiN4r8FkteWnAKwdgQ6UJXh3VPSL1hbSQ')">USDT
+                                    (TRC20)</button>
+                                <button type="button" class="c-btn"
+                                    onclick="switchCrypto('ETH', '0xab3f219c2132edee0203d2d1a365e281a3508021')">ETH (ERC20)</button>
+                            </div>
+
+                            <div class="wallet-display">
+                                <div class="qr-center">
+                                    <img id="qrCodeImg" src="usdt_qr.jpg" alt="QR Code"
+                                        style="object-fit: contain; background: #fff;">
+                                </div>
+                                <input type="text" id="walletAddr" class="wallet-input"
+                                    value="TRiN4r8FkteWnAKwdgQ6UJXh3VPSL1hbSQ" readonly>
+                            </div>
+
+                            <button type="button" class="btn-copy t" onclick="copyCrypto()" data-ar="نسخ عنوان المحفظة"
+                                data-en="Copy Wallet Address">نسخ عنوان المحفظة</button>
+
+                            <div class="total-row">
+                                <span style="font-weight: 700; font-size: 1rem; color: #fff;" class="t"
+                                    data-ar="المبلغ الإجمالي" data-en="Total Amount">المبلغ الإجمالي</span>
+                                <div>
+                                    <span
+                                        style="font-size: 1rem; text-decoration: line-through; color: #ff3333; font-family: var(--font-sans-en); margin-right: 10px;">$1500.00</span>
+                                    <span
+                                        style="font-weight: 900; font-size: 1.4rem; color: var(--accent); letter-spacing: 1px;">$799.00</span>
+                                </div>
+                            </div>
+
+                            <div class="confirm-checkbox-container" style="margin-bottom: 25px; background: rgba(0,0,0,0.5); border: 1px solid var(--border-hover); padding: 15px 20px; border-radius: 6px; display: flex; align-items: center; gap: 12px;">
+                                <input type="checkbox" id="confirmPaidCheckbox" required style="width: 20px; height: 20px; accent-color: var(--accent); cursor: pointer; flex-shrink: 0;">
+                                <label for="confirmPaidCheckbox" class="t" style="font-size: 0.9rem; color: #fff; cursor: pointer; line-height: 1.6; padding-top: 2px; font-family: var(--font-sans-ar);" 
+                                    data-ar="أوافق وأقر بأنني قمت بتحويل المبلغ كاملاً إلى المحفظة المذكورة، ومستعد لإرسال إيصال الدفع لمعالجة الطلب." 
+                                    data-en="I agree and confirm that I have transferred the full amount to the mentioned wallet, and I am ready to send the payment receipt.">
+                                    أوافق وأقر بأنني قمت بتحويل المبلغ كاملاً إلى المحفظة المذكورة، ومستعد لإرسال إيصال الدفع لمعالجة الطلب.
+                                </label>
+                            </div>
+
+                            <div class="confirm-checkbox-container" style="margin-bottom: 25px; background: rgba(0,0,0,0.5); border: 1px solid var(--border-hover); padding: 15px 20px; border-radius: 6px; display: flex; align-items: center; gap: 12px;">
+                                <input type="checkbox" id="confirmNetworkCheckbox" required style="width: 20px; height: 20px; accent-color: var(--accent); cursor: pointer; flex-shrink: 0;">
+                                <label for="confirmNetworkCheckbox" class="t" style="font-size: 0.9rem; color: #fff; cursor: pointer; line-height: 1.6; padding-top: 2px; font-family: var(--font-sans-ar);" 
+                                    data-ar="أقر وأؤكد أنني قمت باختيار الشبكة الصحيحة وتأكدت من عنوان المحفظة قبل الإرسال." 
+                                    data-en="I acknowledge and confirm that I have selected the correct network and verified the wallet address before sending.">
+                                    أقر وأؤكد أنني قمت باختيار الشبكة الصحيحة وتأكدت من عنوان المحفظة قبل الإرسال.
+                                </label>
+                            </div>
+
+
+
+                            <button type="submit" class="btn-confirm t" data-ar="إتمام الدفع الان"
+                                data-en="Complete Payment Now">إتمام الدفع الان</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- 3. قسم فيديوهات الأرباح من غرفة العمليات (الجديد) -->
+    <section class="section-padding"
+        style="background-color: #050505; border-top: 1px solid #111; border-bottom: 1px solid #111;">
+        <h2 class="section-title t" data-ar="نتائج <span>تداول حقيقي</span>"
+            data-en="Real <span>Trading Results</span>">نتائج <span>تداول حقيقي</span></h2>
+        <p class="section-desc t"
+            data-ar="أرباح حقيقية، صفقات مباشرة، ولا يوجد تزييف. شاهد بعض مقتطفات الصفقات الناجحة."
+            data-en="Real profits, live trades, zero fake results. Watch clips of our successful trades.">أرباح حقيقية،
+            صفقات مباشرة، ولا يوجد تزييف. شاهد بعض مقتطفات الصفقات الناجحة.</p>
+
+        <div class="videos-grid">
+            <!-- مساحة فيديو 1 -->
+            <div class="vid-card">
+                <video class="v-player" controls preload="metadata">
+                    <source src="NERO FLOW.MOV#t=0.001" type="video/quicktime">
+                    <source src="NERO FLOW.MOV#t=0.001" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="v-info">
+                    <div class="v-title t" data-ar="أرباح صفقة مباشرة" data-en="Live Trade Profits">أرباح صفقة مباشرة
+                    </div>
+                    <div class="v-sub t" data-ar="2700 دولار تم تحقيقها" data-en="$2700 Achieved">2700 دولار تم تحقيقها
+                    </div>
+                </div>
+            </div>
+            <!-- مساحة فيديو 2 -->
+            <div class="vid-card">
+                <video class="v-player" controls preload="metadata">
+                    <source src="NERO FLOW (2).MOV#t=0.001" type="video/quicktime">
+                    <source src="NERO FLOW (2).MOV#t=0.001" type="video/mp4">
+                </video>
+                <div class="v-info">
+                    <div class="v-title t" data-ar="أرباح جلسة الناسداك" data-en="Nasdaq Session Profits">أرباح جلسة
+                        الناسداك</div>
+                    <div class="v-sub t" data-ar="تحويل 400$ إلى 5000$" data-en="Turned $400 into $5000">تحويل 400$ إلى
+                        5000$</div>
+                </div>
+            </div>
+            <!-- مساحة فيديو 3 -->
+            <div class="vid-card">
+                <video class="v-player" controls preload="metadata">
+                    <source src="NERO FLOW (3).MOV#t=0.001" type="video/quicktime">
+                    <source src="NERO FLOW (3).MOV#t=0.001" type="video/mp4">
+                </video>
+                <div class="v-info">
+                    <div class="v-title t" data-ar="سكالبينغ سريع" data-en="Quick Scalping">سكالبينغ سريع</div>
+                    <div class="v-sub t" data-ar="13000 دولار تم تحقيقها" data-en="$13000 Achieved">13000 دولار تم
+                        تحقيقها</div>
+                </div>
+            </div>
+            <!-- مساحة فيديو 4 -->
+            <div class="vid-card">
+                <video class="v-player" controls preload="metadata">
+                    <source src="nero flow 4.MOV#t=0.001" type="video/quicktime">
+                    <source src="nero flow 4.MOV#t=0.001" type="video/mp4">
+                </video>
+                <div class="v-info">
+                    <div class="v-title t" data-ar="صفقة سوينغ" data-en="Swing Trade">صفقة سوينغ
+                    </div>
+                    <div class="v-sub t" data-ar="180 الف دولار تم تحقيقها" data-en="$180,000 Achieved">180 الف دولار تم تحقيقها</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. الآراء الاحترافية المطابقة تماماً لنمط Fabervaale -->
+    <section class="results-section">
+        <h2 class="section-title t" style="margin-bottom: 50px;" data-ar="ماذا يقول <span>المتدربون؟</span>"
+            data-en="What Do <span>Traders</span> Say?">ماذا يقول <span>المتدربون؟</span></h2>
+        <div class="reviews-container">
+            <div class="review-box">
+                <svg class="quote-icon" viewBox="0 0 24 24">
+                    <path
+                        d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                </svg>
+                <div class="stars-container">
+                    <div class="r-stars">★★★★★</div>
+                </div>
+                <div class="r-text t"
+                    data-ar="والله كورس يبيض الوجه، ما قصرت، ترتيب وشرح واضح واستفدنا حيل. ماكو تعقيد، مجرد تطبيق فعلي لاستراتيجيات حقيقية ساعدتني على الدخول والخروج بأرباح ثابتة."
+                    data-en="An outstanding course, delivered perfectly. Very organized and clear explanations. No complications, just actual application of highly effective strategies.">
+                    والله كورس يبيض الوجه، ما قصرت، ترتيب وشرح واضح واستفدنا حيل. ماكو تعقيد، مجرد تطبيق فعلي
+                    لاستراتيجيات حقيقية ساعدتني على الدخول والخروج بأرباح ثابتة.</div>
+                <div class="r-author t" data-ar="فهد - الكويت" data-en="Fahad - Kuwait">فهد - الكويت</div>
+            </div>
+            <div class="review-box">
+                <svg class="quote-icon" viewBox="0 0 24 24">
+                    <path
+                        d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                </svg>
+                <div class="stars-container">
+                    <div class="r-stars">★★★★★</div>
+                </div>
+                <div class="r-text t"
+                    data-ar="يا اخي انت الاب الروحي للمتداولين هههه بدون مبالغة ده احسن استثمار عملته في عمري"
+                    data-en="Brother, you are the Godfather of traders haha. Without exaggeration, this is the best investment I have ever made in my life">
+                    يا اخي انت الاب الروحي للمتداولين هههه بدون مبالغة ده احسن استثمار عملته في عمري</div>
+                <div class="r-author t" data-ar="محمود - مصر" data-en="Mahmoud - Egypt">محمود - مصر</div>
+            </div>
+            <div class="review-box">
+                <svg class="quote-icon" viewBox="0 0 24 24">
+                    <path
+                        d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                </svg>
+                <div class="stars-container">
+                    <div class="r-stars">★★★★★</div>
+                </div>
+                <div class="r-text t"
+                    data-ar="عاشت ايدك استاذ و رحمه الله والديك ع هيك شرح غير نظرتي للسوق"
+                    data-en="Great job teacher, God bless your parents for such an explanation that completely changed my view of the market.">
+                    عاشت ايدك استاذ و رحمه الله والديك ع هيك شرح غير نظرتي للسوق</div>
+                <div class="r-author t" data-ar="كرار - العراق" data-en="Karrar - Iraq">كرار - العراق</div>
+            </div>
+            <div class="review-box">
+                <svg class="quote-icon" viewBox="0 0 24 24">
+                    <path
+                        d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                </svg>
+                <div class="stars-container">
+                    <div class="r-stars">★★★★★</div>
+                </div>
+                <div class="r-text t"
+                    data-ar="شهادة لله، شغل متعوب عليه يعطيك ألف عافية، فعلاً كورس بيسوى دهب، صرت افهم الشارت صح واعرف إيمتى أدخل وإيمتى أطلع بثقة قوية ولا أروع من هيك مجهود."
+                    data-en="I testify, this is immensely hard work. A course truly worth gold. I finally understand charts perfectly and know exactly when to enter and exit with strong confidence.">
+                    شهادة لله، شغل متعوب عليه يعطيك ألف عافية، فعلاً كورس بيسوى دهب، صرت افهم الشارت صح واعرف إيمتى أدخل
+                    وإيمتى أطلع بثقة قوية ولا أروع من هيك مجهود.</div>
+                <div class="r-author t" data-ar="عمر - سوريا" data-en="Omar - Syria">عمر - سوريا</div>
+            </div>
+            <div class="review-box">
+                <svg class="quote-icon" viewBox="0 0 24 24">
+                    <path
+                        d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                </svg>
+                <div class="stars-container">
+                    <div class="r-stars">★★★★★</div>
+                </div>
+                <div class="r-text t"
+                    data-ar="من افضل الكورسات الي دخلتها بصراحة الرجال ما يبخل بأي معلومة ويشرح لك الواقع بعيد عن التنظير وهياط السوشيال ميديا. هذا أصدق مدرب مر علي وأنصح فيه بقوة."
+                    data-en="One of the best courses I've joined. The man doesn't hold back any information and explains reality far from social media hype. This is the most honest trainer I've met and I strongly recommend him.">
+                    من افضل الكورسات الي دخلتها بصراحة الرجال ما يبخل بأي معلومة ويشرح لك الواقع بعيد عن التنظير وهياط السوشيال ميديا. هذا أصدق مدرب مر علي وأنصح فيه بقوة.</div>
+                <div class="r-author t" data-ar="عبد الله - السعودية" data-en="Abdullah - KSA">عبد الله - السعودية</div>
+            </div>
+            <div class="review-box">
+                <svg class="quote-icon" viewBox="0 0 24 24">
+                    <path
+                        d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                </svg>
+                <div class="stars-container">
+                    <div class="r-stars">★★★★★</div>
+                </div>
+                <div class="r-text t"
+                    data-ar="بالصراحة خويا التجربة ديالي معاك كانت ممتازة. الاستراتيجيات خدامة مزيان والسوق ولى بان لي واضح بحال الشمس. الخسارة ولات قليلة بزاف والارباح ديالي ثابتة في كل أسبوع."
+                    data-en="Honestly brother, my experience with you was excellent. The strategies work perfectly and the market became as clear as the sun. Losses are minimal and profits are consistent.">
+                    بالصراحة خويا التجربة ديالي معاك كانت ممتازة. الاستراتيجيات خدامة مزيان والسوق ولى بان لي واضح بحال
+                    الشمس. الخسارة ولات قليلة بزاف والارباح ديالي ثابتة في كل أسبوع.</div>
+                <div class="r-author t" data-ar="يوسف - المغرب" data-en="Youssef - Morocco">يوسف - المغرب</div>
+            </div>
+            <div class="review-box">
+                <svg class="quote-icon" viewBox="0 0 24 24">
+                    <path
+                        d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                </svg>
+                <div class="stars-container">
+                    <div class="r-stars">★★★★★</div>
+                </div>
+                <div class="r-text t"
+                    data-ar="أنفقت آلاف الدولارات في السابق على دورات لا تقدم أي قيمة فعلية، لكن هنا وجدت ساحة المعركة الحقيقية. الوضوح والشفافية يستحق كل درهم صراحة."
+                    data-en="I previously spent thousands on courses that offer no real value, but here I found the real battleground. The clarity and transparency is worth every penny.">
+                    أنفقت آلاف الدولارات في السابق على دورات لا تقدم أي قيمة فعلية، لكن هنا وجدت ساحة المعركة الحقيقية. الوضوح والشفافية يستحق كل درهم صراحة.</div>
+                <div class="r-author t" data-ar="سعيد - دبي" data-en="Saeed - Dubai">سعيد - دبي</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم المخاطر أسفل الموقع -->
+    <div class="risk-disclosure">
+        <h4 class="t" data-ar="إخلاء المسؤولية ومخاطر التداول (Risk Disclosure)" data-en="Risk Disclosure & Disclaimer">
+            إخلاء المسؤولية ومخاطر التداول (Risk Disclosure)</h4>
+        <p class="t"
+            data-ar="تداول العقود الآجلة، الفوركس، والعقود مقابل الفروقات (CFDs) ينطوي على مخاطر كبيرة وقد لا يكون مناسباً لجميع المستثمرين. قد تخسر جزءاً أو كل رأس مالك المستثمر الأساسي. يجب أن تتداول فقط بالأموال التي يمكنك تحمل خسارتها (Risk Capital) دون أن يؤثر ذلك على مستوى معيشتك أو التزاماتك المالية. الأداء السابق لا يضمن النتائج المستقبلية."
+            data-en="Trading futures, forex, and CFDs involves substantial risk and is not suitable for every investor. You may lose more than the amount initially invested. Only risk capital — or portions of it — should be used for trading. Past performance is not indicative of future results.">
+            تداول العقود الآجلة، الفوركس، والعقود مقابل الفروقات (CFDs) ينطوي على مخاطر كبيرة وقد لا يكون مناسباً لجميع
+            المستثمرين. قد تخسر جزءاً أو كل رأس مالك المستثمر الأساسي. يجب أن تتداول فقط بالأموال التي يمكنك تحمل
+            خسارتها (Risk Capital) دون أن يؤثر ذلك على مستوى معيشتك أو التزاماتك المالية. الأداء السابق لا يضمن النتائج
+            المستقبلية.</p>
+        <p class="t"
+            data-ar="يجب أن تدرك أن جميع الاستراتيجيات المقدمة هنا مبنية على تحليل البيانات التاريخية ولا تشكل نصيحة استثمارية محددة. التداول في حسابات حقيقية يحمل مخاطر مالية حقيقية تتأثر بالسيولة وعوامل السوق التي لا يمكن محاكاتها بشكل كامل في الحسابات الوهمية. المعلومات المتوفرة هنا تهدف إلى غايات تعليمية وتوجيهية بحتة."
+            data-en="Hypothetical performance results have many inherent limitations. The presented results may differ significantly in terms of actual gains and losses. Information provided should not be considered specific trading advice. Trade at your own risk.">
+            يجب أن تدرك أن جميع الاستراتيجيات المقدمة هنا مبنية على تحليل البيانات التاريخية ولا تشكل نصيحة استثمارية
+            محددة. التداول في حسابات حقيقية يحمل مخاطر مالية حقيقية تتأثر بالسيولة وعوامل السوق التي لا يمكن محاكاتها
+            بشكل كامل في الحسابات الوهمية. المعلومات المتوفرة هنا تهدف إلى غايات تعليمية وتوجيهية بحتة.</p>
+    </div>
+
+    <!-- قسم صفحاتنا الرسمية (Social Media) -->
+    <section class="social-section">
+        <h3 class="t" data-ar="تابع <span>صفحاتنا الرسمية</span>" data-en="Follow <span>Our Official Pages</span>">تابع
+            <span>صفحاتنا الرسمية</span>
+        </h3>
+        <div class="social-links">
+            <a href="https://www.instagram.com/577nf?igsh=eXZtdjNyd3YwMWc5&utm_source=qr" target="_blank" class="s-link"
+                rel="noopener noreferrer">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+                <span>Instagram</span>
+            </a>
+            <a href="https://www.tiktok.com/@nero.flow1?_r=1&_t=ZS-95WUFmVplHZ" target="_blank" class="s-link"
+                rel="noopener noreferrer">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5v3a8 8 0 0 1-5-3"></path>
+                </svg>
+                <span>TikTok</span>
+            </a>
+            <a href="https://t.me/Neroflow1" target="_blank" class="s-link" rel="noopener noreferrer">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+                <span>Telegram</span>
+            </a>
+        </div>
+    </section>
+
+    <footer>NERO FLOW ©
+        <script>document.write(new Date().getFullYear())</script>
+    </footer>
+
+
+    <script>
+        function toggleLang() {
+            const html = document.documentElement;
+            const btn = document.getElementById('langToggle');
+            const isAr = html.lang === 'ar';
+
+            html.lang = isAr ? 'en' : 'ar';
+            html.dir = isAr ? 'ltr' : 'rtl';
+            btn.innerText = isAr ? 'عربي' : 'English';
+
+            document.querySelectorAll('.t').forEach(el => {
+                el.innerHTML = el.getAttribute(isAr ? 'data-en' : 'data-ar');
+            });
+        }
+
+        /* الانتقال من الشاشة الأولى للتفاصيل */
+        function openCheckout() {
+            document.getElementById('introState').style.display = 'none';
+            document.getElementById('courseDetailsState').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function backToIntro() {
+            document.getElementById('courseDetailsState').style.display = 'none';
+            document.getElementById('introState').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        /* الانتقال من التفاصيل لطرق الدفع */
+        function showPaymentMethods() {
+            document.getElementById('courseDetailsState').style.display = 'none';
+            document.getElementById('paymentMethodsState').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'instant' });
+        }
+
+        function backToCourseDetails() {
+            document.getElementById('paymentMethodsState').style.display = 'none';
+            document.getElementById('courseDetailsState').style.display = 'block';
+            document.getElementById('cryptoExpand').style.display = 'none';
+            document.getElementById('cryptoMethodContainer').classList.remove('selected');
+            window.scrollTo({ top: 0, behavior: 'instant' });
+        }
+
+        /* إظهار تفاصيل الكريبتو عند النقر على الدفع بالكريبتو */
+        function showCryptoDetails() {
+            document.getElementById('cryptoRadioBtn').checked = true;
+            document.getElementById('cryptoMethodContainer').classList.add('selected');
+            document.getElementById('cryptoExpand').style.display = 'block';
+        }
+
+        function switchCrypto(coin, wallet) {
+            document.querySelectorAll('.crypto-options .c-btn').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+
+            document.getElementById('walletAddr').value = wallet;
+
+            if (coin === 'USDT') {
+                document.getElementById('qrCodeImg').src = 'usdt_qr.jpg';
+            } else if (coin === 'ETH') {
+                document.getElementById('qrCodeImg').src = 'eth_qr.jpg';
+            } else {
+                document.getElementById('qrCodeImg').src = `https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=${wallet}`;
+            }
+        }
+
+        function copyCrypto() {
+            const input = document.getElementById('walletAddr');
+            input.select();
+            document.execCommand('copy');
+            const msg = document.documentElement.lang === 'ar' ? 'تم نسخ العنوان بنجاح' : 'Address copied successfully';
+            alert(msg);
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const countryElem = document.getElementById('userCountry');
+            const name = document.getElementById('userName').value;
+            const email = document.getElementById('userEmail').value;
+            const country = countryElem.options[countryElem.selectedIndex].text;
+
+            if (!document.getElementById('userCountry').value) {
+                alert(document.documentElement.lang === 'ar' ? 'الرجاء اختيار البلد الخاص بك أولاً' : 'Please select your country first');
+                return;
+            }
+
+            const activeBtn = document.querySelector('.crypto-options .c-btn.active');
+            const cryptoMethod = activeBtn ? activeBtn.innerText.trim() : 'USDT';
+            const isAr = document.documentElement.lang === 'ar';
+
+            const submitBtn = document.querySelector('.btn-confirm');
+            submitBtn.style.background = '#0a0';
+            submitBtn.style.color = '#fff';
+
+            let secondsLeft = 4;
+            submitBtn.innerText = isAr ? `جاري التحويل للتيليجرام... (${secondsLeft})` : `Redirecting to Telegram... (${secondsLeft})`;
+
+            const countdownInterval = setInterval(() => {
+                secondsLeft--;
+                if (secondsLeft > 0) {
+                    submitBtn.innerText = isAr ? `جاري التحويل للتيليجرام... (${secondsLeft})` : `Redirecting to Telegram... (${secondsLeft})`;
+                }
+            }, 1000);
+
+            setTimeout(() => {
+                clearInterval(countdownInterval);
+                let message = isAr
+                    ? `مرحباً فريق Nero Flow،\nلقد قمت بتحويل مبلغ الاشتراك (799$).\n\nالاسم: ${name}\nإيميلي: ${email}\nالبلد: ${country}\nطريقة الدفع: ${cryptoMethod}\n\nإليك إيصال الدفع:`
+                    : `Hello Nero Flow Team,\nI have transferred the subscription amount ($799).\n\nName: ${name}\nMy Email: ${email}\nCountry: ${country}\nPayment Method: ${cryptoMethod}\n\nHere is my payment receipt:`;
+
+                const telegramUrl = `https://t.me/Neroflow1?text=${encodeURIComponent(message)}`;
+                window.location.href = telegramUrl;
+
+                // إعادة التهيئة
+                document.getElementById('checkoutForm').reset();
+                submitBtn.style.background = 'var(--accent)';
+                submitBtn.style.color = '#000';
+                submitBtn.innerText = isAr ? 'إتمام الدفع الان' : 'Complete Payment Now';
+                document.getElementById('cryptoExpand').style.display = 'none';
+                document.getElementById('cryptoMethodContainer').classList.remove('selected');
+                document.getElementById('paymentMethodsState').style.display = 'none';
+                document.getElementById('introState').style.display = 'block';
+            }, 4000);
+        }
+
+        // إعداد العداد التنازلي (28 يوم تتكرر تلقائياً)
+        function updateTimer() {
+            const period = 28 * 24 * 60 * 60 * 1000; // 28 Days in ms
+            const now = new Date().getTime();
+            const timeLeft = period - (now % period);
+
+            const d = Math.floor(timeLeft / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+            const h = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+            const m = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+            const s = Math.floor((timeLeft % (1000 * 60)) / 1000).toString().padStart(2, '0');
+
+            const timerEl = document.getElementById("countdownTimer");
+            if (timerEl) timerEl.innerHTML = `${d}:${h}:${m}:${s} <div class="dot"></div>`;
+        }
+        setInterval(updateTimer, 1000);
+        updateTimer();
+    </script>
+</body>
+
+</html>
